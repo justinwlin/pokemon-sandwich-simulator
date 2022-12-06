@@ -56,6 +56,47 @@ class SearchingForSandwich {
         })
     }
 
+    depthFirstSearchForSandwich = (isCondimentNode: boolean) => {
+        // Termination case
+        // If fillings or condiments is empty terminate
+        // if (this.fillings.length === 0 || this.condiments.length === 0) {
+        //     return;
+        // }
+        // If the max amount of ingredients are hit, the terminate the search
+        if (this.fillings.length >= this.maxFillings) {
+            return;
+        }
+
+        if (this.condiments.length >= this.maxCondiments) {
+            return;
+        }
+
+        // if the length of recipesFound is equal to the number of recipes to search for, terminate the search
+        if (this.numberOfRecipesToSearchFor != "ALL" && this.recipesFound.length === this.numberOfRecipesToSearchFor) {
+            return;
+        }
+
+        // Recursive case
+        // Children
+        if (isCondimentNode) {
+            // If I am at a condiment node, then I need to try to add a condiment
+            const currentCondiment = CONDIMENT[this.currentCondimentIdx]
+            this.condiments.push(currentCondiment)
+            console.log("Current condiment pushing: ", currentCondiment)
+            console.log("Current condiments list: ", JSON.stringify(this.condiments))
+            this.depthFirstSearchForSandwich(false)
+            this.condiments.pop()
+            this.currentCondimentIdx += 1
+        } else {
+            // I need to try to add a filling
+            const currentFilling = FILLING[this.currentFillingIdx]
+            this.fillings.push(currentFilling)
+            this.depthFirstSearchForSandwich(true)
+            this.fillings.pop()
+            this.currentFillingIdx += 1
+        }
+    }
+
 }
 
 export const findSandwichRecipes = (typeOfPower: typeOfPower, type: typesOfPokemon,
@@ -63,5 +104,18 @@ export const findSandwichRecipes = (typeOfPower: typeOfPower, type: typesOfPokem
 
     const searchAlgo = new SearchingForSandwich(typeOfPower, type, level, maxFillings, maxCondiments, numberOfRecipesToSearchFor, 0, 0, [], [], [], {})
     const findExistingSandwiches = searchAlgo.checkExistingSandwichEffects();
-    console.log(findExistingSandwiches)
+
+    searchAlgo.depthFirstSearchForSandwich(true)
+
+    // const sandwichList: any[] = []
+    // const existingSandwiches = checkExistingSandwichEffects(typeOfPower, type, level)
+    // console.log(existingSandwiches)
+
+    // const recipesFound: any[] = []
+    // const fillings: filling[] = []
+    // const condiment: condiment[] = []
+    // // craftSandwich()
+    // depthFirstSearchForSandwich(typeOfPower, type, level,
+    //     fillings, condiment, 0, 0, maxFillings,
+    //     maxCondiments, recipesFound, numberOfRecipesToSearchFor)
 }
