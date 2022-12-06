@@ -22,6 +22,7 @@ import { runTests } from './test/tests';
 import Card from './components/Card';
 import './App.css';
 import React from 'react';
+import { findSandwichRecipes } from './searchAlgorithm/dfsSolver';
 
 // per player
 const MAX_FILLINGS = 6;
@@ -413,6 +414,17 @@ function App() {
     }
 
     activeSums = sums;
+    console.log(
+      'Active Fillings: ',
+      activeFillings,
+      'Active Condiments: ',
+      activeCondiments,
+      'Sums: ',
+      sums,
+      'Found Sandwich: ',
+      foundSandwich
+    );
+
     const generatedSandwich = craftSandwich(
       activeFillings,
       activeCondiments,
@@ -659,6 +671,13 @@ function App() {
           Source Code
         </a>
       </small>
+      <button
+        onClick={() => {
+          findSandwichRecipes('Exp. Point Power', 'Ghost', '2', 6, 4, 'ALL');
+        }}
+      >
+        Search for recipe!
+      </button>
     </div>
   );
 }

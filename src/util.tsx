@@ -335,6 +335,7 @@ export const presetSandwichExists = (
   activeFillings: filling[],
   activeCondiments: condiment[]
 ): presetSandwich | null => {
+  console.log(activeFillings);
   const ingredients = [
     ...activeFillings.sort((a, b) => a.name.localeCompare(b.name)),
     ...activeCondiments.sort((a, b) => a.name.localeCompare(b.name)),

@@ -1,19 +1,36 @@
 type filling = {
-  imageUrl: string;
   name: string;
+  tastes: {
+    flavor: string;
+    amount: number;
+  }[];
+  powers: {
+    type: string;
+    amount: number;
+  }[];
+  types: {
+    type: string;
+    amount: number;
+  }[];
+  imageUrl: string;
   pieces: number;
-  powers: { type: string; amount: number }[];
-  tastes: { type: string; amount: number }[];
-  types: { type: string; amount: number }[];
 };
 
 type condiment = {
-  imageUrl: string;
   name: string;
-  pieces: number;
-  powers: { type: string; amount: number }[];
-  tastes: { type: string; amount: number }[];
-  types: { type: string; amount: number }[];
+  tastes: {
+    flavor: string;
+    amount: number;
+  }[];
+  powers: {
+    type: string;
+    amount: number;
+  }[];
+  types: {
+    type: string;
+    amount: number;
+  }[];
+  imageUrl: string;
 };
 
 type power = {
@@ -48,3 +65,38 @@ type presetSandwich = {
   imageUrl: string;
   location: string;
 };
+
+type typeOfPower =
+  | 'Egg Power'
+  | 'Catching Power'
+  | 'Exp. Point Power'
+  | 'Item Drop Power'
+  | 'Raid Power'
+  | 'Sparkling Power'
+  | 'Title Power'
+  | 'Humungo Power'
+  | 'Teensy Power'
+  | 'Encounter Power';
+
+type typesOfPokemon =
+  | 'Normal'
+  | 'Fighting'
+  | 'Flying'
+  | 'Poison'
+  | 'Ground'
+  | 'Rock'
+  | 'Bug'
+  | 'Ghost'
+  | 'Steel'
+  | 'Fire'
+  | 'Water'
+  | 'Grass'
+  | 'Electric'
+  | 'Psychic'
+  | 'Ice'
+  | 'Dragon'
+  | 'Dark'
+  | 'Fairy'
+  | '';
+
+type typesOfFlavors = 'Sweet' | 'Salty' | 'Sour' | 'Bitter' | 'Hot';
