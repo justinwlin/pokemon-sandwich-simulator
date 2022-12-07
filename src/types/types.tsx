@@ -69,6 +69,25 @@ type presetSandwich = {
   location: string;
 };
 
+type craftedSandwich = {
+  number: string;
+  name: string;
+  description: string;
+  fillings: filling[];
+  condiments: condiment[];
+  effects: {
+    name: any;
+    fullType: type;
+    fullPower: power;
+    type: string;
+    level: string;
+  }[];
+  imageUrl: string;
+  piecesDropped: number;
+  totalPieces: number;
+  stars: number;
+};
+
 type typeOfPower =
   | 'Egg Power'
   | 'Catching Power'

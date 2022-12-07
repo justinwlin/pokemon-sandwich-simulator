@@ -22,6 +22,7 @@ import { runTests } from './test/tests';
 import Card from './components/Card';
 import './App.css';
 import React from 'react';
+import { findSandwichRecipes } from './searchingAlgorithm/searchingAlgorithm';
 
 // per player
 const MAX_FILLINGS = 6;
@@ -662,6 +663,14 @@ function App() {
       {renderMath()}
       {renderSearch()}
       {renderSettings()}
+      <button
+        onClick={() => {
+          findSandwichRecipes('Exp. Point Power', 'Bug', '2', 6, 4, 5);
+        }}
+      >
+        {' '}
+        Searching algorithm{' '}
+      </button>
       <small>
         <a href="https://github.com/cecilbowen/pokemon-sandwich-simulator">
           Source Code

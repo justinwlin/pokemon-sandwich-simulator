@@ -367,7 +367,6 @@ export const presetSandwichExists = (
   activeFillings: filling[],
   activeCondiments: condiment[]
 ): presetSandwich | null => {
-  console.log(activeFillings);
   const ingredients = [
     ...activeFillings.sort((a, b) => a.name.localeCompare(b.name)),
     ...activeCondiments.sort((a, b) => a.name.localeCompare(b.name)),
@@ -396,14 +395,14 @@ export const craftSandwich = (
   fillings: filling[],
   condiments: condiment[],
   sums: summation,
-  presetSandwich: presetSandwich
-) => {
+  presetSandwich: presetSandwich | null
+): craftedSandwich | null => {
   if (
     sums.tastes.length === 0 ||
     sums.powers.length === 0 ||
     sums.types.length === 0
   ) {
-    return;
+    return null;
   }
 
   // get sandwich star level
